@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuerySnap</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>QuerySnap</h1>
+        <p>框选截图或粘贴文字，选择 API 与模型后向 AI 提问。</p>
+      </header>
+
+      <section class="section">
+        <div class="label-row">
+          <label for="apiSelect">API 配置</label>
+          <div class="inline-actions">
+            <button id="newApiButton" type="button" class="link-button">新增</button>
+            <button id="deleteApiButton" type="button" class="link-button danger">删除</button>
+          </div>
+        </div>
+        <select id="apiSelect"></select>
+      </section>
+
+      <section class="section config-panel">
+        <label for="apiNameInput">API 名称</label>
+        <input id="apiNameInput" type="text" placeholder="例如 OpenAI、Local API、第三方网关">
+
+        <label for="apiKeyInput">API Key</label>
+        <input id="apiKeyInput" type="password" autocomplete="off" placeholder="sk-...">
+
+        <label for="baseUrlInput">基础 URL</label>
+        <input id="baseUrlInput" type="url" placeholder="https://api.openai.com/v1">
+
+        <label for="requestTypeSelect">接口格式</label>
+        <select id="requestTypeSelect">
+          <option value="chat_completions">Chat Completions（兼容性更好）</option>
+          <option value="responses">Responses API</option>
+        </select>
+
+        <button id="saveApiButton" type="button" class="secondary">保存当前 API 配置</button>
+      </section>
+
+      <section class="section">
+        <div class="label-row">
+          <label for="modelSelect">模型</label>
+          <span class="muted">根据基础 URL 自动获取</span>
+        </div>
+        <select id="modelSelect"></select>
+      </section>
+
+      <section class="section">
+        <label for="questionInput">问题</label>
+        <textarea id="questionInput" rows="4" placeholder="请输入你想问 AI 的问题"></textarea>
+      </section>
+
+      <section class="section">
+        <label for="textInput">复制文字内容</label>
+        <textarea id="textInput" rows="5" placeholder="可选：粘贴网页文字、报错信息或其他上下文。纯文本提问会使用这里的内容。"></textarea>
+      </section>
+
+      <section class="actions">
+        <button id="screenshotAskButton" type="button">框选截图提问</button>
+        <button id="textAskButton" type="button" class="secondary">纯文本提问</button>
+      </section>
+
+      <section class="section">
+        <div class="label-row">
+          <span>状态</span>
+          <button id="clearButton" type="button" class="link-button">清空结果</button>
+        </div>
+        <div id="statusBox" class="panel">等待操作。</div>
+      </section>
+
+      <section class="section">
+        <label>AI 回答</label>
+        <div id="answerBox" class="panel answer">暂无回答。</div>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

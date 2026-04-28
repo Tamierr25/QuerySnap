@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "QuerySnap",
+  "version": "0.3.0",
+  "description": "框选网页截图或粘贴文字后，使用多个 OpenAI 兼容 API 配置向 AI 提问。",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content-script.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "QuerySnap",
+    "default_popup": "popup.html"
+  }
+}

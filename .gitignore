@@ -1,0 +1,15 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and local secrets
+*.log
+.env
+.env.*
+
+# Dependencies/build outputs, if added later
+node_modules/
+dist/
+build/
