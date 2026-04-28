@@ -172,11 +172,7 @@ Popup / FAB  ──→  Background (Service Worker)  ──→  Content Script
 | 截图分析不准 | 换用视觉多模态模型，检查接口格式匹配 |
 | 返回乱码/空结果 | 插件自动解析 SSE 流式，未匹配到文本时会报错提示 |
 
-## 安全提醒
 
-- **不要**将 API Key 写入源码、README 或提交到 Git 仓库
-- `chrome.storage.local` 适合本地使用，非生产级密钥存储
-- 如需公开发布，建议通过自有后端代理 API 请求，在后端处理鉴权、限流和密钥管理
 
 ## License
 
